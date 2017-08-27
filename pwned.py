@@ -23,11 +23,11 @@ def check_passwd(filename, passwd):
             line = psfile.read(RECORD_SIZE - 1)
             line = line.strip()
 
-            if int(passwd, 16) < int(line, 16):
+            if passwd < line:
                 high = mid - 1 
-            elif int(passwd, 16) > int(line, 16):
+            elif passwd > line:
                 low = mid + 1
-            elif int(passwd, 16) == int(line, 16):
+            elif passwd == line:
                 return SearchResult(lineno=mid+1, tries=tries, sha1hash=line)
     return None
 
